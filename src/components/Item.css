@@ -22,6 +22,6 @@ i.fa-trash-o {
   float: right;
   margin-top: 5px;
 }
-li.item-content {
+.item-content {
   word-wrap: break-word;
 }
