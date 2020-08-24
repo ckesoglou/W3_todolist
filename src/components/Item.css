@@ -1,0 +1,27 @@
+li.list-group-item {
+  margin: 0;
+  text-align: left !important;
+}
+li.list-group-item-done {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+li:hover {
+  background-color: #f9f1f2 !important;
+  cursor: pointer;
+  color: var(--main-color);
+}
+i {
+  color: var(--main-color);
+  vertical-align: middle;
+}
+i.done {
+  margin-right: 20px;
+}
+i.fa-trash-o {
+  float: right;
+  margin-top: 5px;
+}
+li.item-content {
+  word-wrap: break-word;
+}
