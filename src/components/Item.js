@@ -3,11 +3,10 @@ import classNames from "classnames";
 import "./Item.css";
 
 function Item(props) {
-  const { todo, handleRemove } = props;
+  const { todo, handleClick, handleRemove } = props;
   const [complete, setComplete] = useState(todo.isComplete);
-  function handleClick() {
-    setComplete((prevState) => !prevState);
-  }
+  
+  React.useEffect(() => { setComplete(todo.isComplete) }, [todo.isComplete]);
 
   return (
     <li
@@ -16,14 +15,14 @@ function Item(props) {
       })}
     >
       {complete ? (
-        <i class="fa fa-check-circle fa-2x done" onClick={handleClick}></i>
+        <i className="fa fa-check-circle fa-2x done" onClick={() => handleClick(todo.id)}></i>
       ) : (
-        <i class="fa fa-circle-thin fa-2x done" onClick={handleClick}></i>
+        <i className="fa fa-circle-thin fa-2x done" onClick={() => handleClick(todo.id)}></i>
       )}
       <span className="item-content">{todo.name}</span>
       <i
-        class="fa fa-trash-o fa-lg"
-        onClick={() => handleRemove(todo.name)}
+        className="fa fa-trash-o fa-lg"
+        onClick={() => handleRemove(todo.id)}
       ></i>
     </li>
   );

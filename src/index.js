@@ -7,14 +7,17 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const todos = [
   {
+    id: -1,
     name: "Learn React Hooks",
     isComplete: false,
   },
   {
+    id: -2,
     name: "Read book",
     isComplete: true,
   },
   {
+    id: -3,
     name: "Study AIP",
     isComplete: false,
   },

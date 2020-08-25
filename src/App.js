@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./App.css";
 import ItemList from "./components/ItemList";
 
+var keyCount = 0;
+
 function App(props) {
   const [todos, setTodos] = useState(props.todos);
   const [item, setItem] = useState("");
@@ -15,13 +17,20 @@ function App(props) {
     event.preventDefault();
     if (event.keyCode === 13) {
       //key 13 is Enter key on keyboard
-      setTodos([{ name: event.target.value, isComplete: false }, ...todos]);
+      setTodos([{ id: keyCount++, name: event.target.value, isComplete: false }, ...todos]);
       setItem(""); //Clear input box after adding item
     }
   }
 
-  function handleRemove(name) {
-    setTodos(todos.filter((todo) => todo.name !== name));
+  function handleClick(id) {
+    setTodos(todos.map((todo) => {
+      if (todo.id === id) todo.isComplete = !todo.isComplete;
+      return todo;
+    }));
+  }
+
+  function handleRemove(id) {
+    setTodos(todos.filter((todo) => todo.id !== id));
   }
 
   function handleSearch(event) {
@@ -56,7 +65,7 @@ function App(props) {
         ></input>
 
         <div>
-          <ItemList todos={todos} handleRemove={handleRemove} search={search} />
+          <ItemList todos={todos} handleClick={handleClick} handleRemove={handleRemove} search={search} />
         </div>
       </div>
     </div>
